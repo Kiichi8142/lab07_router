@@ -1,32 +1,21 @@
 <script setup>
-import travelList from '../data/shopList'
+import travelList from '../data/shopList';
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
-</script>
+const route = useRoute()
+const shopData = computed(() => travelList.value.find((item) => item.id == route.params.id))
 
-<script>
-export default {
-    data() {
-        return {
-            userId: null,
-            shopDetail: null
-        };
-    },
-    created() {
-        // Access the route parameter
-        this.userId = this.$route.params.id;
-        this.shopDetail = travelList.value.find(item => item.id === parseInt(this.userId));
-    }
-};
 </script>
 
 <template>
     <div class="p-8 mx-auto max-w-7xl">
         <div class="flex flex-col lg:flex-row w-fit">
-            <img :src="shopDetail.imgUrl" class="rounded-md h-52 lg:h-96 object-cover">
+            <img :src="shopData.imgUrl" class="rounded-md h-52 lg:h-96 object-cover">
             <div class="mt-8 lg:mt-0 lg:ml-4 flex flex-col">
                 <p class="text-indigo-600 font-semibold text-xl">ชื่อร้าน</p>
-                <p class="text-gray-950 font-medium text-3xl">{{ shopDetail.name }}</p>
-                <p class="text-indigo-500 font-medium text-3xl">{{ shopDetail.price }}</p>
+                <p class="text-gray-950 font-medium text-3xl">{{ shopData.name }}</p>
+                <p class="text-indigo-500 font-medium text-3xl">{{ shopData.price }}</p>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit turpis nec viverra aliquam. Nulla
                     mauris ante, accumsan at turpis sed, pulvinar consectetur turpis. Vivamus semper tincidunt felis sed

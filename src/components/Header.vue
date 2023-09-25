@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router';
 
 const menuActive = ref(true)
 
@@ -13,10 +14,10 @@ function toggleMenu() {
     <header>
         <nav class="border-b mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
-                <router-link to="/">
+                <RouterLink to="/">
                     <span class="sr-only">Your Company</span>
                     <img class="h-8 w-auto" src="../assets/logo.svg" alt="">
-                </router-link>
+                </RouterLink>
             </div>
             <div class="flex lg:hidden">
                 <button @click="toggleMenu()" type="button"
@@ -30,7 +31,7 @@ function toggleMenu() {
                 </button>
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
-                <router-link to="/shops" class="text-sm font-semibold leading-6 text-gray-900">CoffeeShop</router-link>
+                <RouterLink to="/shops" class="text-sm font-semibold leading-6 text-gray-900">CoffeeShop</RouterLink>
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
@@ -55,8 +56,9 @@ function toggleMenu() {
                 <div class="mt-6 flow-root">
                     <div class="-my-6 divide-y divide-gray-500/10">
                         <div class="space-y-2 py-6">
-                            <router-link to="/shops"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">CoffeeShop</router-link>
+                            <RouterLink to="/shops"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                CoffeeShop</RouterLink>
                         </div>
                     </div>
                 </div>
